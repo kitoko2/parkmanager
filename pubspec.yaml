@@ -1,0 +1,56 @@
+name: parkmanager
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.1.4 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  shared_preferences: ^2.2.2
+  flutter_animate: ^4.5.0
+  zoom_tap_animation: ^1.1.0
+  smooth_page_indicator: ^1.1.0
+  lottie: ^2.7.0
+
+dev_dependencies: 
+  flutter_launcher_icons: "^0.13.1"
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/logo.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/onboarding/
+
+  fonts:
+    - family: poppins
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+          weight: 900
+        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins/Poppins-Thin.ttf
+    
+    - family: clashdisplay
+      fonts:
+        - asset: assets/fonts/Clashdisplay/ClashDisplay-Light.otf
+        - asset: assets/fonts/Clashdisplay/ClashDisplay-Regular.otf
+        - asset: assets/fonts/Clashdisplay/ClashDisplay-Bold.otf
+          weight: 900
