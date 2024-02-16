@@ -7,6 +7,10 @@ abstract class Routes {
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const AUTHENTICATION = _Paths.AUTHENTICATION;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const HOMEPAGE = _Paths.HOMEPAGE;
+  static const SETTING = _Paths.SETTING;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const ADDPARKINGPLACE = _Paths.ADDPARKINGPLACE;
 }
 
 abstract class _Paths {
@@ -15,4 +19,8 @@ abstract class _Paths {
   static const SPLASHSCREEN = '/splashscreen';
   static const AUTHENTICATION = '/authentication';
   static const ONBOARDING = '/onboarding';
+  static const HOMEPAGE = '/homepage';
+  static const SETTING = '/setting';
+  static const NOTIFICATION = '/notification';
+  static const ADDPARKINGPLACE = '/addparkingplace';
 }

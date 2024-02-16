@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "874396160194",
+    "project_id": "parcmanager-87bbd",
+    "storage_bucket": "parcmanager-87bbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874396160194:android:ffad424a681e6323bf2b5b",
+        "android_client_info": {
+          "package_name": "com.example.parkmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTZWK8GX71-4-IWYYp65JssHAyDoguh08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

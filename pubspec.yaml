@@ -15,6 +15,13 @@ dependencies:
   zoom_tap_animation: ^1.1.0
   smooth_page_indicator: ^1.1.0
   lottie: ^2.7.0
+  iconly: ^1.0.1
+  fluttertoast: ^8.2.4
+  image_picker: ^1.0.7
+  share_plus: ^7.2.2
+  firebase_messaging: ^14.7.10
+  url_launcher: ^6.2.4
+  firebase_core: ^2.24.2
 
 dev_dependencies: 
   flutter_launcher_icons: "^0.13.1"
@@ -34,6 +41,8 @@ flutter:
   assets:
     - assets/
     - assets/onboarding/
+    - assets/lotties/
+    - assets/notifs/
 
   fonts:
     - family: poppins

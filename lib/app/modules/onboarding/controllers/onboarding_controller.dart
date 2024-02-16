@@ -49,7 +49,7 @@ class OnboardingController extends GetxController
       if (status == AnimationStatus.completed) {
         Future.delayed(400.ms, () async {
           // await SharedPreferencesService.sethasOnboarded();
-          Get.to(() => const AuthenticationView());
+          Get.off(() => const AuthenticationView());
         });
       }
     });

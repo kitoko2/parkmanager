@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- image picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Besoin de choissir une image pour votre parking</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Besoin de choissir une image pour votre parking</string>
+	<!-- image picker end -->
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
