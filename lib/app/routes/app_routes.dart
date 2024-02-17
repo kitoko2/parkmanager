@@ -13,6 +13,7 @@ abstract class Routes {
   static const ADDPARKINGPLACE = _Paths.ADDPARKINGPLACE;
   static const HOMEPUBLIC = _Paths.HOMEPUBLIC;
   static const HOMEPAGEPUBLIC = _Paths.HOMEPAGEPUBLIC;
+  static const BOOKING = _Paths.BOOKING;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const ADDPARKINGPLACE = '/addparkingplace';
   static const HOMEPUBLIC = '/homepublic';
   static const HOMEPAGEPUBLIC = '/homepagepublic';
+  static const BOOKING = '/booking';
 }

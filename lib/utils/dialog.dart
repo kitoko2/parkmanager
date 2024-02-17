@@ -90,7 +90,7 @@ class CustomDialog {
               description,
               style: const TextStyle(
                 fontSize: 13,
-                color: Colors.grey,
+                // color: Colors.grey,
               ),
             ),
             const SizedBox(height: 10),

@@ -68,13 +68,13 @@ class AuthenticationView extends GetView<AuthenticationController> {
                 groupValue: controller.userRole.value,
               );
             }),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             Obx(
               () => RoleHelpText(
                 isPublic: controller.userRole.value == UserRole.public,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Row(
               children: [
                 const Text("Vous avez déja un compte?"),
@@ -157,7 +157,7 @@ class RoleHelpText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Row(
         children: [

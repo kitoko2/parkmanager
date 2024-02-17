@@ -47,13 +47,13 @@ class CustomTextFormField extends StatelessWidget {
         style: TextStyle(
             fontFamily: ConstantString.policeApp,
             fontSize: 19,
-            fontWeight: FontWeight.w500),
+            fontWeight: FontWeight.w400),
         controller: controller,
         readOnly: readOnly,
         onChanged: onChanged,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(12, 8, 12, 2),
+          contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 2),
           border: InputBorder.none,
           hintText: hintText,
           hintStyle: TextStyle(

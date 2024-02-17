@@ -4,6 +4,8 @@ import '../modules/addparkingplace/bindings/addparkingplace_binding.dart';
 import '../modules/addparkingplace/views/addparkingplace_view.dart';
 import '../modules/authentication/bindings/authentication_binding.dart';
 import '../modules/authentication/views/authentication_view.dart';
+import '../modules/booking/bindings/booking_binding.dart';
+import '../modules/booking/views/booking_view.dart';
 import '../modules/home_admin/bindings/home_binding.dart';
 import '../modules/home_admin/views/home_admin_view.dart';
 import '../modules/homepage_admin/bindings/homepage_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.HOMEPAGEPUBLIC,
       page: () => const HomepagepublicView(),
       binding: HomepagepublicBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOKING,
+      page: () => const BookingView(),
+      binding: BookingBinding(),
     ),
   ];
 }

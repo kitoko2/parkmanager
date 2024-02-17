@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:parkmanager/app/components/admin_user/custom_updateparking_bottonsheet.dart';
 import 'package:parkmanager/app/components/admin_user/parking_button.dart';
 import 'package:parkmanager/app/components/admin_user/place_widget.dart';
-import 'package:parkmanager/app/modules/homepage_admin/views/empty_place_widget.dart';
+import 'package:parkmanager/app/modules/booking/views/booking_view.dart';
+import 'package:parkmanager/app/components/empty_place_widget.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/app/services/parking_service.dart/parking_management.dart';
 
@@ -22,6 +23,14 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
         actions: [
           IconButton(
             onPressed: () {
+              Get.to(const BookingView(
+                isAdmin: true,
+              ));
+            },
+            icon: const Icon(Icons.book),
+          ),
+          IconButton(
+            onPressed: () {
               Get.to(const NotificationView());
             },
             icon: const Icon(Icons.notification_add),
@@ -35,7 +44,7 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
             ParkingButton(onTap: () {
               Get.bottomSheet(const BottomSheetUpdateParking());
             }),
-            const Divider(),
+            const SizedBox(height: 20),
             StreamBuilder(
                 stream: ParkingManagementService.getParkingPlacesByAdminId(
                     controller.uid),
@@ -45,13 +54,15 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
                     final data = snap.data;
                     print(data);
                     return Expanded(
-                      // child: EmptyPlaceWidget(),
                       child: data == null || data.isEmpty
                           ? const EmptyPlaceWidget()
                           : GridView.builder(
                               itemCount: data.length,
                               itemBuilder: (context, i) {
-                                return PlaceWidget(isbusy: i.isEven);
+                                final place = data[i];
+                                return PlaceWidget(
+                                  parkingPlace: place,
+                                );
                               },
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(

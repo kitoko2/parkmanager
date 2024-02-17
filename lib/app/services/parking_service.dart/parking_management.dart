@@ -69,6 +69,16 @@ class ParkingManagementService {
       },
     ).toList(); //pour retourner une liste
   }
+
+  //for public user
+  static Stream<List<ParkingPlace>> searchParkingPlacesByEtage(int etage) {
+    Query query = FirebaseFirestore.instance
+        .collection(ConstantString.parkingPlaceCollectionName)
+        .where('etage', isEqualTo: etage)
+        .where('isAvailable', isEqualTo: true);
+
+    return query.snapshots().map(listPlacesParking);
+  }
 }
 
 class ResultCreateParking {

@@ -22,7 +22,7 @@ class LoginView extends GetView<LoginController> {
               height: MediaQuery.of(context).padding.top,
             ),
             Text(
-              "Bon retours, connectez vous maintenant!",
+              "Bon retour, connectez vous maintenant!",
               style: TextStyle(
                 fontSize: 25,
                 fontFamily: ConstantString.secondpoliceApp,
@@ -55,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                   onPressed: () {
                     Get.off(const AuthenticationView());
                   },
-                  child: const Text("S'inscrire"),
+                  child: const Text("Vous inscrire"),
                 )
               ],
             ),
