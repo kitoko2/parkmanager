@@ -1,12 +1,13 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:parkmanager/app/models/user_info.dart";
+import "package:parkmanager/utils/constants/constant_strings.dart";
 
 class DatabaseFirestore {
   final String? uid;
   DatabaseFirestore({this.uid});
 
   CollectionReference userCollection =
-      FirebaseFirestore.instance.collection("users");
+      FirebaseFirestore.instance.collection(ConstantString.userCollectionName);
 
   saveUser({String? email, UserRole? role}) async {
     return userCollection.doc(uid).set({

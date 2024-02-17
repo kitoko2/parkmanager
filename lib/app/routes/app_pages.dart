@@ -8,6 +8,8 @@ import '../modules/home_admin/bindings/home_binding.dart';
 import '../modules/home_admin/views/home_admin_view.dart';
 import '../modules/homepage_admin/bindings/homepage_binding.dart';
 import '../modules/homepage_admin/views/homepage_view.dart';
+import '../modules/homepagepublic/bindings/homepagepublic_binding.dart';
+import '../modules/homepagepublic/views/homepagepublic_view.dart';
 import '../modules/homepublic/bindings/homepublic_binding.dart';
 import '../modules/homepublic/views/homepublic_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.HOMEPUBLIC,
       page: () => const HomepublicView(),
       binding: HomepublicBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEPAGEPUBLIC,
+      page: () => const HomepagepublicView(),
+      binding: HomepagepublicBinding(),
     ),
   ];
 }

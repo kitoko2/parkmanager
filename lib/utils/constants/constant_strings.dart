@@ -3,4 +3,7 @@
 class ConstantString {
   static String policeApp = 'poppins';
   static String secondpoliceApp = 'clashdisplay';
+
+  static String userCollectionName = "users";
+  static String parkingPlaceCollectionName = "placesOfParking";
 }

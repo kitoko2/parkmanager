@@ -5,8 +5,8 @@ import '../controllers/homepage_controller.dart';
 class HomepageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomepageController>(
-      () => HomepageController(),
+    Get.lazyPut<HomepageAdminController>(
+      () => HomepageAdminController(),
     );
   }
 }

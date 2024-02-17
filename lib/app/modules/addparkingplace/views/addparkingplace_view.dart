@@ -11,6 +11,7 @@ class AddparkingplaceView extends GetView<AddparkingplaceController> {
   const AddparkingplaceView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddparkingplaceController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -35,14 +36,22 @@ class AddparkingplaceView extends GetView<AddparkingplaceController> {
               style: TextStyle(),
             ),
             const SizedBox(height: 10),
-            const CustomTextFormField(hintText: "Numéro de la place"),
+            CustomTextFormField(
+              hintText: "Numéro de la place",
+              controller: controller.numberPlaceController,
+              keyboardType: TextInputType.number,
+            ),
             const SizedBox(height: 10),
-            const CustomTextFormField(hintText: "Etage de la place"),
+            CustomTextFormField(
+              hintText: "Etage de la place",
+              controller: controller.etagePlaceController,
+              keyboardType: TextInputType.number,
+            ),
             const SizedBox(height: 30),
             CustomButton(
               title: "Ajouter",
-              onTap: () {
-                // Get.off(const HomeView());
+              onTap: () async {
+                await controller.createParkingPlace();
               },
             )
           ],

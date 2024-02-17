@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:parkmanager/app/components/bottom_bar_item.dart';
 import 'package:parkmanager/app/modules/addparkingplace/views/addparkingplace_view.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -31,21 +32,17 @@ class HomeAdminView extends GetView<HomeController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _bottomAppBarItem(
+                  bottomAppBarItem(
                     icon: IconlyLight.home,
                     page: 0,
                     context,
                     label: "Home",
+                    currentPage: controller.currentPage,
+                    onTap: () {
+                      HapticFeedback.selectionClick();
+                      controller.goToTab(0);
+                    },
                   ),
-                  // false
-                  //     ? Visibility(
-                  //         visible: false,
-                  //         child: FloatingActionButton(
-                  //           onPressed: () {},
-                  //           elevation: 0,
-                  //         ),
-                  //       )
-                  //     :
                   FloatingActionButton(
                     onPressed: () {
                       HapticFeedback.selectionClick();
@@ -55,50 +52,21 @@ class HomeAdminView extends GetView<HomeController> {
                     },
                     child: const Icon(Icons.add),
                   ),
-                  _bottomAppBarItem(
-                      icon: IconlyLight.setting,
-                      page: 1,
-                      context,
-                      label: "Paramètre"),
+                  bottomAppBarItem(
+                    icon: IconlyLight.setting,
+                    page: 1,
+                    context,
+                    label: "Paramètre",
+                    currentPage: controller.currentPage,
+                    onTap: () {
+                      HapticFeedback.selectionClick();
+                      controller.goToTab(1);
+                    },
+                  ),
                 ],
               ),
             ),
           );
         }));
-  }
-
-  Widget _bottomAppBarItem(BuildContext context,
-      {required icon, required page, required label}) {
-    return ZoomTapAnimation(
-      onTap: () {
-        HapticFeedback.selectionClick();
-        controller.goToTab(page);
-      },
-      child: Container(
-        color: Colors.transparent,
-        width: 100,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color:
-                  controller.currentPage == page ? Colors.black : Colors.grey,
-              size: 30,
-            ),
-            Text(
-              label,
-              style: TextStyle(
-                  color: controller.currentPage == page
-                      ? Colors.black
-                      : Colors.grey,
-                  fontSize: 13,
-                  fontWeight:
-                      controller.currentPage == page ? FontWeight.w600 : null),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

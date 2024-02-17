@@ -31,7 +31,7 @@ class AuthenticationController extends GetxController {
     if (res.user != null) {
       Get.offAll(const StreamRoleView());
     } else {
-      CustomDialog.errorDialog(description: res.message ?? "");
+      CustomDialog.alertDialog(description: res.message ?? "");
     }
   }
 }

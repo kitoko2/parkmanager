@@ -1,23 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parkmanager/app/modules/homepagepublic/views/homepagepublic_view.dart';
+
+import '../../setting/views/setting_view.dart';
 
 class HomepublicController extends GetxController {
-  //TODO: Implement HomepublicController
+  PageController pageController = PageController();
+  RxInt currentPage = 0.obs;
+  List<Widget> pages = [
+    const HomepagepublicView(),
+    const SettingView(),
+  ];
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void goToTab(int page) {
+    currentPage.value = page;
+    pageController.jumpToPage(page);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

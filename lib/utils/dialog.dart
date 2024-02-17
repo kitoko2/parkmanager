@@ -70,10 +70,15 @@ class CustomDialog {
     );
   }
 
-  static errorDialog(
-      {String? title, required String description, String? btnTitle}) {
+  static alertDialog(
+      {String? title,
+      required String description,
+      String? btnTitle,
+      VoidCallback? onTap,
+      bool? barrierDismissible = true}) {
     return Get.defaultDialog(
         title: title ?? "Un problème est survenue",
+        barrierDismissible: barrierDismissible!,
         titleStyle: TextStyle(
           fontFamily: ConstantString.secondpoliceApp,
           fontWeight: FontWeight.bold,
@@ -92,9 +97,10 @@ class CustomDialog {
             CustomButton(
                 width: double.infinity,
                 title: btnTitle ?? "Compris !",
-                onTap: () {
-                  Get.back();
-                })
+                onTap: onTap ??
+                    () {
+                      Get.back();
+                    })
           ],
         ));
   }

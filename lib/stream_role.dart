@@ -18,12 +18,14 @@ class StreamRoleView extends StatelessWidget {
         if (snap.hasData) {
           final data = snap.data;
           return data == null
-              ? Container()
+              ? const Scaffold()
               : data.role == UserRole.public
                   ? const HomepublicView()
                   : const HomeAdminView();
         }
-        return const Center(child: CircularProgressIndicator());
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
       },
     );
   }

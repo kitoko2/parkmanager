@@ -1,23 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class HomepageController extends GetxController {
-  //TODO: Implement HomepageController
-
-  final count = 0.obs;
+class HomepageAdminController extends GetxController {
+  late String uid;
   @override
   void onInit() {
+    uid = FirebaseAuth.instance.currentUser!.uid;
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

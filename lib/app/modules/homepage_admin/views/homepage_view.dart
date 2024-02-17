@@ -4,14 +4,17 @@ import 'package:get/get.dart';
 import 'package:parkmanager/app/components/admin_user/custom_updateparking_bottonsheet.dart';
 import 'package:parkmanager/app/components/admin_user/parking_button.dart';
 import 'package:parkmanager/app/components/admin_user/place_widget.dart';
+import 'package:parkmanager/app/modules/homepage_admin/views/empty_place_widget.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
+import 'package:parkmanager/app/services/parking_service.dart/parking_management.dart';
 
 import '../controllers/homepage_controller.dart';
 
-class HomepageAdminView extends GetView<HomepageController> {
+class HomepageAdminView extends GetView<HomepageAdminController> {
   const HomepageAdminView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomepageAdminController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -33,21 +36,37 @@ class HomepageAdminView extends GetView<HomepageController> {
               Get.bottomSheet(const BottomSheetUpdateParking());
             }),
             const Divider(),
-            Expanded(
-              // child: EmptyPlaceWidget(),
-              child: GridView.builder(
-                itemCount: 10,
-                itemBuilder: (context, i) {
-                  return PlaceWidget(isbusy: i.isEven);
-                },
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 90,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                ),
-              ),
-            )
+            StreamBuilder(
+                stream: ParkingManagementService.getParkingPlacesByAdminId(
+                    controller.uid),
+                builder: (context, snap) {
+                  print(snap);
+                  if (snap.hasData) {
+                    final data = snap.data;
+                    print(data);
+                    return Expanded(
+                      // child: EmptyPlaceWidget(),
+                      child: data == null || data.isEmpty
+                          ? const EmptyPlaceWidget()
+                          : GridView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, i) {
+                                return PlaceWidget(isbusy: i.isEven);
+                              },
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisExtent: 90,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                              ),
+                            ),
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                })
           ],
         ),
       ),
