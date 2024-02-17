@@ -11,6 +11,7 @@ abstract class Routes {
   static const SETTING = _Paths.SETTING;
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const ADDPARKINGPLACE = _Paths.ADDPARKINGPLACE;
+  static const HOMEPUBLIC = _Paths.HOMEPUBLIC;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const SETTING = '/setting';
   static const NOTIFICATION = '/notification';
   static const ADDPARKINGPLACE = '/addparkingplace';
+  static const HOMEPUBLIC = '/homepublic';
 }

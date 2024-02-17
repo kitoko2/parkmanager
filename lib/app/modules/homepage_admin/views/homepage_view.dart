@@ -8,8 +8,8 @@ import 'package:parkmanager/app/modules/notification/views/notification_view.dar
 
 import '../controllers/homepage_controller.dart';
 
-class HomepageView extends GetView<HomepageController> {
-  const HomepageView({Key? key}) : super(key: key);
+class HomepageAdminView extends GetView<HomepageController> {
+  const HomepageAdminView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

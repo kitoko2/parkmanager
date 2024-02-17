@@ -7,13 +7,14 @@ import 'package:parkmanager/app/modules/addparkingplace/views/addparkingplace_vi
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../controllers/home_controller.dart';
+import '../controllers/home_admin_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class HomeAdminView extends GetView<HomeController> {
+  const HomeAdminView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
+
     return Scaffold(
         body: PageView(
           controller: controller.pageController,

@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:parkmanager/app/modules/authentication/views/authentication_view.dart';
 import 'package:parkmanager/app/modules/onboarding/views/onboarding_view.dart';
+import 'package:parkmanager/app/services/storage.dart';
 
 class OnboardingController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -48,7 +49,7 @@ class OnboardingController extends GetxController
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Future.delayed(400.ms, () async {
-          // await SharedPreferencesService.sethasOnboarded();
+          await SharedPreferencesService.sethasOnboarded();
           Get.off(() => const AuthenticationView());
         });
       }

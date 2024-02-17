@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:parkmanager/app/components/custom_button.dart';
 import 'package:parkmanager/app/components/custom_text_form_field.dart';
-import 'package:parkmanager/app/modules/home/views/home_view.dart';
+import 'package:parkmanager/app/models/user_info.dart';
+import 'package:parkmanager/app/modules/authentication/views/login_view.dart';
 import 'package:parkmanager/utils/constants/constant_strings.dart';
 
 import '../controllers/authentication_controller.dart';
@@ -13,6 +15,7 @@ class AuthenticationView extends GetView<AuthenticationController> {
   @override
   Widget build(BuildContext context) {
     final keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom > 0.0;
+    final controller = Get.put(AuthenticationController());
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -35,18 +38,60 @@ class AuthenticationView extends GetView<AuthenticationController> {
               style: TextStyle(),
             ),
             const SizedBox(height: 10),
-            const CustomTextFormField(hintText: "Mon email"),
+            CustomTextFormField(
+              hintText: "Mon email",
+              keyboardType: TextInputType.emailAddress,
+              controller: controller.emailController,
+            ),
             const SizedBox(height: 10),
-            const CustomTextFormField(
+            CustomTextFormField(
               hintText: "Mon mot de passe",
+              controller: controller.passwordController,
               obscureText: true,
             ),
-            const SizedBox(height: 30),
-            Text("Vous avez déja un compte?"),
+            const SizedBox(height: 15),
+            Obx(() {
+              return CupertinoSlidingSegmentedControl(
+                children: const {
+                  UserRole.public: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text("Utilisateur public"),
+                  ),
+                  UserRole.admin: Text("Administarteur"),
+                },
+                onValueChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  controller.userRole.value = value;
+                },
+                groupValue: controller.userRole.value,
+              );
+            }),
+            const SizedBox(height: 10),
+            Obx(
+              () => RoleHelpText(
+                isPublic: controller.userRole.value == UserRole.public,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Text("Vous avez déja un compte?"),
+                const Spacer(),
+                TextButton(
+                  onPressed: () {
+                    Get.off(const LoginView());
+                  },
+                  child: const Text("Vous connecter"),
+                )
+              ],
+            ),
+            const SizedBox(height: 10),
             CustomButton(
               title: "Continuer",
-              onTap: () {
-                Get.off(const HomeView());
+              onTap: () async {
+                await controller.register();
               },
             )
           ],
@@ -102,6 +147,35 @@ class AuthenticationView extends GetView<AuthenticationController> {
               decoration: TextDecoration.underline,
             )
           : null,
+    );
+  }
+}
+
+class RoleHelpText extends StatelessWidget {
+  final bool isPublic;
+  const RoleHelpText({super.key, required this.isPublic});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(
+        children: [
+          const Icon(
+            Icons.help,
+            color: Colors.grey,
+          ),
+          const SizedBox(width: 10),
+          Flexible(
+            child: Text(
+              isPublic
+                  ? "Vous pourrez rechercher une place libre dans un parking , faire une reservation puis attendre la reponse de l'admin du parking pour vous garrer"
+                  : "Vous pourrez ajouter et gerer (assigner , désassigner) des places dans votre parking ",
+              style: const TextStyle(fontSize: 11),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

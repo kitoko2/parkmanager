@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parkmanager/app/modules/onboarding/views/onboarding_view.dart';
 import 'package:parkmanager/app/routes/app_pages.dart';
 import 'package:parkmanager/app/services/storage.dart';
+import 'package:parkmanager/stream_role.dart';
 
 class SplashscreenController extends GetxController {
   bool asLogged = false;
@@ -12,19 +14,18 @@ class SplashscreenController extends GetxController {
   @override
   void onInit() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      asLogged = false;
+      asLogged = FirebaseAuth.instance.currentUser != null;
       bool hasOnboarded = SharedPreferencesService.getHasOnboarded();
-      print(hasOnboarded);
 
       Timer(
         const Duration(milliseconds: 700),
         () async {
           hasOnboarded
               ? asLogged
-                  ? Get.offAllNamed(Routes.HOME)
+                  ? Get.offAll(() => const StreamRoleView())
                   : Get.offAllNamed(Routes.AUTHENTICATION)
               : asLogged
-                  ? Get.offAllNamed(Routes.HOME)
+                  ? Get.offAll(() => const StreamRoleView())
                   : Get.offAll(() => const OnboardingView());
         },
       );

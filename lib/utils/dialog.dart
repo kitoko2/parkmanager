@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parkmanager/app/components/custom_button.dart';
+import 'package:parkmanager/utils/constants/constant_strings.dart';
 
 class CustomDialog {
   static customLoad() {
@@ -66,5 +68,34 @@ class CustomDialog {
         ],
       ),
     );
+  }
+
+  static errorDialog(
+      {String? title, required String description, String? btnTitle}) {
+    return Get.defaultDialog(
+        title: title ?? "Un problème est survenue",
+        titleStyle: TextStyle(
+          fontFamily: ConstantString.secondpoliceApp,
+          fontWeight: FontWeight.bold,
+        ),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              description,
+              style: const TextStyle(
+                fontSize: 13,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 10),
+            CustomButton(
+                width: double.infinity,
+                title: btnTitle ?? "Compris !",
+                onTap: () {
+                  Get.back();
+                })
+          ],
+        ));
   }
 }
