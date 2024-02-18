@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:get/get.dart';
 import 'package:parkmanager/app/components/admin_user/custom_updateparking_bottonsheet.dart';
 import 'package:parkmanager/app/components/admin_user/parking_button.dart';
 import 'package:parkmanager/app/components/admin_user/place_widget.dart';
+import 'package:parkmanager/app/components/custom_button.dart';
 import 'package:parkmanager/app/modules/booking/views/booking_view.dart';
 import 'package:parkmanager/app/components/empty_place_widget.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/app/services/parking_service.dart/parking_management.dart';
+import 'package:parkmanager/utils/constants/constant_colors.dart';
 
 import '../controllers/homepage_controller.dart';
 
@@ -21,14 +24,14 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         actions: [
-          IconButton(
-            onPressed: () {
+          SmallButton(
+            title: "Réservations",
+            onTap: () {
               Get.to(const BookingView(
                 isAdmin: true,
               ));
             },
-            icon: const Icon(Icons.book),
-          ),
+          ).animate().scale().shake(),
           IconButton(
             onPressed: () {
               Get.to(const NotificationView());

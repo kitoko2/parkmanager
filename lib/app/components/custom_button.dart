@@ -68,3 +68,33 @@ class CustomSecondaryButtom extends StatelessWidget {
     );
   }
 }
+
+class SmallButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onTap;
+  const SmallButton({super.key, required this.title, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ZoomTapAnimation(
+      end: .99,
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: ConstantColors.primaryColor,
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

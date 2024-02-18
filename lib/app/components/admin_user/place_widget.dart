@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:parkmanager/app/models/parkingplace.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 
@@ -22,7 +23,11 @@ class PlaceWidget extends StatelessWidget {
             child: parkingPlace.isAvailable == false
                 ? Image.asset(
                     "assets/car.png",
-                  )
+                  ).animate().slideX(
+                      begin: 0.4,
+                      end: 0,
+                      duration: const Duration(milliseconds: 700),
+                    )
                 : const SizedBox(),
           ),
           Text(

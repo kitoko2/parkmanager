@@ -49,6 +49,7 @@ class ReservationService {
           await FirebaseFirestore.instance
               .collection(ConstantString.reservationCollectionName)
               .where('adminId', isEqualTo: adminId)
+              .orderBy('timestamp', descending: true)
               .get();
 
       return listReservation(querySnapshot);
@@ -66,6 +67,7 @@ class ReservationService {
           await FirebaseFirestore.instance
               .collection(ConstantString.reservationCollectionName)
               .where('userId', isEqualTo: userId)
+              .orderBy('timestamp', descending: true)
               .get();
 
       return listReservation(querySnapshot);

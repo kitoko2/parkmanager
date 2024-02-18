@@ -15,7 +15,7 @@ class HomepagepublicController extends GetxController {
 
   int getSearch(String value) {
     try {
-      return int.parse(value);
+      return int.tryParse(value) ?? -99;
     } catch (e) {
       return -99; // le champs entré n'est pas valide
     }

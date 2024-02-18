@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:parkmanager/app/components/admin_user/place_widget.dart';
+import 'package:parkmanager/app/components/custom_button.dart';
 import 'package:parkmanager/app/components/empty_place_widget.dart';
 import 'package:parkmanager/app/components/public_user/make_reservation_bottomsheet.dart';
+import 'package:parkmanager/app/modules/booking/views/booking_view.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:parkmanager/utils/constants/constant_strings.dart';
@@ -28,6 +31,14 @@ class _HomepagepublicViewState extends State<HomepagepublicView> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         actions: [
+          SmallButton(
+            title: "Réservations",
+            onTap: () {
+              Get.to(const BookingView(
+                isAdmin: false,
+              ));
+            },
+          ).animate().scale().shake(),
           IconButton(
             onPressed: () {
               Get.to(const NotificationView());

@@ -46,9 +46,12 @@ class BookingView extends GetView<BookingController> {
                           reservation: reservation,
                           onTap: isAdmin == true
                               ? () {
-                                  Get.bottomSheet(AcceptReservationBottomSheet(
-                                    reservation: reservation,
-                                  ));
+                                  if (reservation.status == "pending") {
+                                    Get.bottomSheet(
+                                        AcceptReservationBottomSheet(
+                                      reservation: reservation,
+                                    ));
+                                  }
                                 }
                               : null,
                         );
