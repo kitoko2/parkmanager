@@ -65,9 +65,9 @@ class ParkingManagementService {
   static List<ParkingPlace> listPlacesParking(QuerySnapshot snapshot) {
     return snapshot.docs.map(
       (DocumentSnapshot document) {
-        return ParkingPlace().placeParking(document);
+        return ParkingPlace().getPlaceParkingForSnapshot(document);
       },
-    ).toList(); //pour retourner une liste
+    ).toList();
   }
 
   //for public user

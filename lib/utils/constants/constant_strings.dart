@@ -6,4 +6,5 @@ class ConstantString {
 
   static String userCollectionName = "users";
   static String parkingPlaceCollectionName = "placesOfParking";
+  static String reservationCollectionName = "reservations";
 }

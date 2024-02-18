@@ -6,7 +6,6 @@ import 'package:iconly/iconly.dart';
 import 'package:parkmanager/app/components/bottom_bar_item.dart';
 import 'package:parkmanager/app/modules/addparkingplace/views/addparkingplace_view.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../controllers/home_admin_controller.dart';
 

@@ -36,7 +36,7 @@ class ParkingPlace {
     return data;
   }
 
-  ParkingPlace placeParking(DocumentSnapshot snapshot) {
+  ParkingPlace getPlaceParkingForSnapshot(DocumentSnapshot snapshot) {
     return ParkingPlace(
       id: snapshot.id,
       placeNumber: (snapshot.data() as dynamic)["placeNumber"],

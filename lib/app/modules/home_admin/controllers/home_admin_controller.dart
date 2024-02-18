@@ -8,7 +8,9 @@ class HomeController extends GetxController {
   RxInt currentPage = 0.obs;
   List<Widget> pages = [
     const HomepageAdminView(),
-    const SettingView(),
+    const SettingView(
+      isAdmin: true,
+    ),
   ];
 
   void goToTab(int page) {

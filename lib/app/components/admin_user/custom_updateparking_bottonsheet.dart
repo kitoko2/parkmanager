@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parkmanager/app/components/custom_button.dart';
+import 'package:parkmanager/app/components/tige_popup.dart';
 import 'package:parkmanager/utils/choose_image.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:parkmanager/utils/dialog.dart';
@@ -116,24 +117,6 @@ class BottomSheetUpdateParking
         ].animate().slideY(delay: 200.ms, begin: 1).fadeIn(),
       ),
     ).animate().fadeIn().shimmer();
-  }
-}
-
-class TigePopUp extends StatelessWidget {
-  const TigePopUp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 40,
-        height: 4,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: Colors.grey.shade300,
-        ),
-      ),
-    );
   }
 }
 

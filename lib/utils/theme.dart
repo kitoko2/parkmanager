@@ -102,19 +102,16 @@ class AppTheme {
       ),
       displayLarge: TextStyle(
         fontFamily: ConstantString.policeApp,
-        // fontWeight: FontWeight.bold,
         fontSize: 25,
         color: Colors.black,
       ),
       displayMedium: TextStyle(
         fontFamily: ConstantString.policeApp,
-        // fontWeight: FontWeight.bold,
         fontSize: 20,
         color: Colors.black,
       ),
       titleLarge: TextStyle(
         fontFamily: ConstantString.policeApp,
-        // fontWeight: FontWeight.bold,
         fontSize: 20,
         color: Colors.black,
       ),

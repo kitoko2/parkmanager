@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:parkmanager/app/components/admin_user/place_widget.dart';
 import 'package:parkmanager/app/components/empty_place_widget.dart';
+import 'package:parkmanager/app/components/public_user/make_reservation_bottomsheet.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:parkmanager/utils/constants/constant_strings.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../controllers/homepagepublic_controller.dart';
 
@@ -81,8 +83,19 @@ class _HomepagepublicViewState extends State<HomepagepublicView> {
                               itemCount: data.length,
                               itemBuilder: (context, i) {
                                 final place = data[i];
-                                return PlaceWidget(
-                                  parkingPlace: place,
+                                return ZoomTapAnimation(
+                                  end: .99,
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                    Get.bottomSheet(
+                                      MakeReservationBottomSheet(
+                                        place: place,
+                                      ),
+                                    );
+                                  },
+                                  child: PlaceWidget(
+                                    parkingPlace: place,
+                                  ),
                                 );
                               },
                               gridDelegate:

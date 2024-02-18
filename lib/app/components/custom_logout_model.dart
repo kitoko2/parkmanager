@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
-import 'package:parkmanager/app/components/admin_user/custom_updateparking_bottonsheet.dart';
 import 'package:parkmanager/app/components/custom_button.dart';
+import 'package:parkmanager/app/components/tige_popup.dart';
 
 class CustomLogoutModal extends StatelessWidget {
   final VoidCallback onTapBtn;

@@ -9,7 +9,9 @@ class HomepublicController extends GetxController {
   RxInt currentPage = 0.obs;
   List<Widget> pages = [
     const HomepagepublicView(),
-    const SettingView(),
+    const SettingView(
+      isAdmin: false,
+    ),
   ];
 
   void goToTab(int page) {
