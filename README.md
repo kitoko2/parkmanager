@@ -18,8 +18,7 @@ Public user -> dogbo804@gmail.com pwd: 111111
 
 ## Capture d'écran
 
-![Capture d'écran](screenshots/1.png)
-![Capture d'écran](screenshots/2.png)
+![Capture d'écran](screenshots/1.png)![Capture d'écran](screenshots/2.png)
 ![Capture d'écran](screenshots/3.png)
 ![Capture d'écran](screenshots/4.png)
 ![Capture d'écran](screenshots/5.png)
