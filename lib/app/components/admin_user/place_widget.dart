@@ -31,7 +31,7 @@ class PlaceWidget extends StatelessWidget {
                 : const SizedBox(),
           ),
           Text(
-            "N°${parkingPlace.placeNumber} , Etage ${parkingPlace.etage}",
+            "Place N°${parkingPlace.placeNumber} , Etage ${parkingPlace.etage}",
             style: const TextStyle(
               fontSize: 13,
               color: Colors.black54,

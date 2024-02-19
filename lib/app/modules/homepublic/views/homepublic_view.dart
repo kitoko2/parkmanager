@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:parkmanager/app/components/bottom_bar_item.dart';
-import 'package:parkmanager/utils/constants/constant_colors.dart';
 
 import '../controllers/homepublic_controller.dart';
 

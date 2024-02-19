@@ -9,6 +9,7 @@ import 'package:parkmanager/app/components/admin_user/accept_reservation_bottoms
 import 'package:parkmanager/app/components/empty_reservation_widget.dart';
 import 'package:parkmanager/app/models/reservatiom_model.dart';
 import 'package:parkmanager/app/services/reservation_service/reservation_service.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../controllers/booking_controller.dart';
 
@@ -20,8 +21,9 @@ class BookingView extends GetView<BookingController> {
     final id = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(isAdmin! ? 'Reservations reçues' : "Reservations effectuées"),
+        title: Text(isAdmin == true
+            ? 'Reservations reçues'
+            : "Reservations effectuées"),
         centerTitle: true,
       ),
       body: Container(
@@ -75,83 +77,95 @@ class ReservationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: Colors.grey.shade100),
-            child: const Icon(
-              IconlyLight.bookmark,
-            ),
-          ),
-          const SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Demande de reservation pendant ${reservation.numberOfHours}h",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+    return ZoomTapAnimation(
+      end: .99,
+      onTap: onTap,
+      child: Card(
+          child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.grey.shade100),
+              child: const Icon(
+                IconlyLight.bookmark,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Détails : " "Place ${reservation.detailPlace ?? "_"}",
-                    style: const TextStyle(fontSize: 12),
+            ),
+            const SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Demande de reservation pendant ${reservation.numberOfHours}h",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
                   ),
-                  Text(
-                    "Réservation Faite le " "${reservation.timestamp ?? "_"}",
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                  Text(
-                    "Statut : " "${reservation.status ?? "_"}",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
-                  ),
-                ],
-              )
-            ],
-          )
-        ],
-      ),
-    )
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Détails : " "Place ${reservation.detailPlace ?? "_"}",
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      "Réservation faite le " "${reservation.timestamp ?? "_"}",
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 7, vertical: 2),
+                      decoration: BoxDecoration(
+                          color: reservation.getColor(),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Text(
+                        reservation.status ?? "_",
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
+      )
 
-        // ListTile(
-        //   leading: const Icon(IconlyLight.bookmark),
-        //   onTap: onTap,
-        //   minLeadingWidth: 10,
-        //   title: Text(
-        //     "Demande de reservation pour ${reservation.numberOfHours}h",
-        //     maxLines: 1,
-        //     overflow: TextOverflow.ellipsis,
-        //     style: const TextStyle(
-        //       fontSize: 14,
-        //       fontWeight: FontWeight.w400,
-        //     ),
-        //   ),
-        //   subtitle: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       Text(
-        //         "Détails : " "Place ${reservation.detailPlace ?? "_"}",
-        //         style: const TextStyle(fontSize: 12),
-        //       ),
-        //       Text(
-        //         reservation.status ?? "_",
-        //         style: const TextStyle(fontSize: 12, color: Colors.grey),
-        //       ),
-        //       Divider()
-        //     ],
-        //   ),
-        // ),
-        );
+          // ListTile(
+          //   leading: const Icon(IconlyLight.bookmark),
+          //   onTap: onTap,
+          //   minLeadingWidth: 10,
+          //   title: Text(
+          //     "Demande de reservation pour ${reservation.numberOfHours}h",
+          //     maxLines: 1,
+          //     overflow: TextOverflow.ellipsis,
+          //     style: const TextStyle(
+          //       fontSize: 14,
+          //       fontWeight: FontWeight.w400,
+          //     ),
+          //   ),
+          //   subtitle: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Text(
+          //         "Détails : " "Place ${reservation.detailPlace ?? "_"}",
+          //         style: const TextStyle(fontSize: 12),
+          //       ),
+          //       Text(
+          //         reservation.status ?? "_",
+          //         style: const TextStyle(fontSize: 12, color: Colors.grey),
+          //       ),
+          //       Divider()
+          //     ],
+          //   ),
+          // ),
+          ),
+    );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parkmanager/app/components/custom_button.dart';
+import 'package:parkmanager/app/models/parkingplace.dart';
+import 'package:parkmanager/app/services/authentification_service/firestore_db_auth.dart';
 import 'package:parkmanager/utils/constants/constant_strings.dart';
 
 class CustomDialog {
@@ -106,9 +108,12 @@ class CustomDialog {
   }
 
   static unassignedDialog(
-      {required VoidCallback onTap, bool? barrierDismissible = true}) {
+      {required VoidCallback onTap,
+      bool? barrierDismissible = true,
+      required ParkingPlace place}) {
     return Get.defaultDialog(
         title: "",
+        titlePadding: EdgeInsets.zero,
         barrierDismissible: barrierDismissible!,
         titleStyle: TextStyle(
           fontFamily: ConstantString.secondpoliceApp,
@@ -117,8 +122,46 @@ class CustomDialog {
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            FutureBuilder(
+                future: DatabaseFirestore.getUserInfoByUUID(place.occupantId!),
+                builder: (context, snap) {
+                  final data = snap.data;
+                  if (snap.hasData) {
+                    return Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.person_sharp),
+                        ),
+                        const SizedBox(width: 15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Occupé par",
+                              style: TextStyle(
+                                fontFamily: ConstantString.secondpoliceApp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              data?.email ?? "_",
+                              style: const TextStyle(fontSize: 14),
+                            )
+                          ],
+                        ),
+                      ],
+                    );
+                  }
+                  return const CircularProgressIndicator();
+                }),
+            const SizedBox(height: 10),
             const Text(
-              "Une fois désassigner cette place sera à nouveau libre , et pourra être réservé par d'autre utilisateur",
+              "Une fois désassignée, cette place sera à nouveau libre et pourra être réservée par d'autres utilisateurs.",
               style: TextStyle(
                 fontSize: 13,
                 // color: Colors.grey,

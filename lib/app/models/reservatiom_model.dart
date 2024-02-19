@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:parkmanager/utils/utils_function.dart';
 
 class Reservation {
@@ -52,5 +54,20 @@ class Reservation {
           (snapshot.data() as dynamic)["timestamp"]),
       detailPlace: (snapshot.data() as dynamic)["detailPlace"],
     );
+  }
+
+  Color getColor() {
+    // accepted , termined,pending
+
+    switch (status) {
+      case "accepted":
+        return Colors.green;
+      case "termined":
+        return ConstantColors.primaryColor;
+      case "pending":
+        return Colors.orange;
+      default:
+        return Colors.deepOrange;
+    }
   }
 }

@@ -71,7 +71,12 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
                                       ? null
                                       : () {
                                           CustomDialog.unassignedDialog(
-                                              onTap: () {});
+                                            onTap: () {
+                                              controller
+                                                  .unassignParkingPlace(place);
+                                            },
+                                            place: place,
+                                          );
                                         },
                                   child: PlaceWidget(
                                     parkingPlace: place,

@@ -40,7 +40,7 @@ class AcceptReservationBottomSheet
           ),
           const Divider(),
           const Text(
-            "L'utilisateur sera autorisé a ce garer dans votre parking!",
+            "L'utilisateur sera autorisé à se garer dans votre parking !",
             style: TextStyle(fontSize: 13),
           ),
           const SizedBox(height: 15),

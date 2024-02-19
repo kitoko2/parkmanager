@@ -16,7 +16,7 @@ class DatabaseFirestore {
     });
   }
 
-  UserInformation infoUser(DocumentSnapshot snapshot) {
+  static UserInformation infoUser(DocumentSnapshot snapshot) {
     return UserInformation(
       uid: snapshot.id,
       email: (snapshot.data() as dynamic)["email"],
@@ -26,5 +26,21 @@ class DatabaseFirestore {
 
   Stream<UserInformation> get userinfo {
     return userCollection.doc(uid).snapshots().map(infoUser);
+  }
+
+  static Future<UserInformation?> getUserInfoByUUID(String idUser) async {
+    try {
+      DocumentSnapshot<Map<String, dynamic>> userSnapshot =
+          await FirebaseFirestore.instance
+              .collection(ConstantString.userCollectionName)
+              .doc(idUser)
+              .get();
+
+      return infoUser(userSnapshot);
+    } catch (e) {
+      print(
+          "Erreur lors de la récupération des informations de l'utilisateur avec l'id $idUser: $e");
+      return null;
+    }
   }
 }
