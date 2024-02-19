@@ -27,7 +27,7 @@ class AddparkingplaceController extends GetxController {
     Get.back();
     if (res.status == true) {
       CustomDialog.alertDialog(
-          description: "Vous avez ajouter une place de parking avec succès",
+          description: "Vous avez ajouté une place de parking avec succès.",
           title: "Félicitations🥳",
           barrierDismissible: false,
           btnTitle: "Continuer",

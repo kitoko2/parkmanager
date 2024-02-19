@@ -10,7 +10,6 @@ import 'package:parkmanager/app/modules/booking/views/booking_view.dart';
 import 'package:parkmanager/app/components/empty_place_widget.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/app/services/parking_service.dart/parking_management.dart';
-import 'package:parkmanager/utils/constants/constant_colors.dart';
 import 'package:parkmanager/utils/dialog.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 

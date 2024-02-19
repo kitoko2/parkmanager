@@ -20,18 +20,18 @@ class OnboardingController extends GetxController
       highlightText: "tous Abidjan là",
     ),
     OnboardingItem(
+      title: "Trouvez rapidement des places disponibles",
       description:
-          "Propriétaire ? Monétisez votre voiture en toute simplicité ! Gérez vos locations et augmentez vos revenus sans complications avec Allodriver.",
+          "Grâce à notre application, vous pouvez rapidement trouver des places de parking disponibles dans les parkings de Vinci, Indigo, et plus encore.",
       image: "assets/onboarding/2.png",
-      title: "Gagnez avec ",
-      highlightText: "Allodriver",
+      highlightText: "avec nos partenaires",
     ),
     OnboardingItem(
+      title: "Réservez votre place à l'avance",
       description:
-          "Ressentez la liberté de conduire ! Allodriver offre une expérience exceptionnelle. Rejoignez-nous pour explorer le monde au volant avec plaisir",
+          "Ne vous inquiétez plus de trouver une place de parking à la dernière minute",
       image: "assets/onboarding/3.png",
-      title: "Explorez avec ",
-      highlightText: "Allodriver",
+      highlightText: "Facilemennnt!",
     ),
   ];
 

@@ -42,7 +42,7 @@ class MakeReservationBottomSheet
           ),
           const Divider(),
           const Text(
-            "Entrer le nombre d'heure que vous souhaitez!",
+            "Entrez le nombre d'heures que vous souhaitez !",
             style: TextStyle(fontSize: 13),
           ),
           const SizedBox(height: 10),

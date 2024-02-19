@@ -85,25 +85,30 @@ class CustomDialog {
           fontFamily: ConstantString.secondpoliceApp,
           fontWeight: FontWeight.bold,
         ),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              description,
-              style: const TextStyle(
-                fontSize: 13,
-                // color: Colors.grey,
+        content: WillPopScope(
+          onWillPop: () async {
+            return barrierDismissible;
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 13,
+                  // color: Colors.grey,
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            CustomButton(
-                width: double.infinity,
-                title: btnTitle ?? "Compris !",
-                onTap: onTap ??
-                    () {
-                      Get.back();
-                    })
-          ],
+              const SizedBox(height: 10),
+              CustomButton(
+                  width: double.infinity,
+                  title: btnTitle ?? "Compris !",
+                  onTap: onTap ??
+                      () {
+                        Get.back();
+                      })
+            ],
+          ),
         ));
   }
 

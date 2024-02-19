@@ -62,6 +62,7 @@ class AcceptReservationBottomSheet
 
 class AcceptReservationBottomSheetController extends GetxController {
   acceptParkingReservation(Reservation reservation) async {
+    Get.back();
     CustomDialog.customLoad();
     final res = await ReservationService.acceptParkingReservation(
       reservation.id!,

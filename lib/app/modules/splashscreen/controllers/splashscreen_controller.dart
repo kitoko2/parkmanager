@@ -14,9 +14,10 @@ class SplashscreenController extends GetxController {
   @override
   void onInit() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      asLogged = FirebaseAuth.instance.currentUser != null;
+      final currentUser = FirebaseAuth.instance.currentUser;
+      asLogged = currentUser != null;
       bool hasOnboarded = SharedPreferencesService.getHasOnboarded();
-
+      print("hasOnboarded $hasOnboarded  aslloged : $asLogged ${currentUser}");
       Timer(
         const Duration(milliseconds: 700),
         () async {
