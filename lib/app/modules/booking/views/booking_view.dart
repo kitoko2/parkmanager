@@ -75,33 +75,83 @@ class ReservationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: const Icon(IconlyLight.bookmark),
-      onTap: onTap,
-      minLeadingWidth: 10,
-      title: Text(
-        "Demande de reservation pour ${reservation.numberOfHours}h",
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-      subtitle: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Card(
+        child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Row(
         children: [
-          Text(
-            "Détail de la place : " "${reservation.detailPlace ?? "Aucun"}",
-            style: const TextStyle(fontSize: 12),
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle, color: Colors.grey.shade100),
+            child: const Icon(
+              IconlyLight.bookmark,
+            ),
           ),
-          Text(
-            reservation.status ?? "_",
-            style: const TextStyle(fontSize: 12, color: Colors.grey),
-          ),
-          Divider()
+          const SizedBox(width: 20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Demande de reservation pendant ${reservation.numberOfHours}h",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Détails : " "Place ${reservation.detailPlace ?? "_"}",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  Text(
+                    "Réservation Faite le " "${reservation.timestamp ?? "_"}",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  Text(
+                    "Statut : " "${reservation.status ?? "_"}",
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
+                ],
+              )
+            ],
+          )
         ],
       ),
-    );
+    )
+
+        // ListTile(
+        //   leading: const Icon(IconlyLight.bookmark),
+        //   onTap: onTap,
+        //   minLeadingWidth: 10,
+        //   title: Text(
+        //     "Demande de reservation pour ${reservation.numberOfHours}h",
+        //     maxLines: 1,
+        //     overflow: TextOverflow.ellipsis,
+        //     style: const TextStyle(
+        //       fontSize: 14,
+        //       fontWeight: FontWeight.w400,
+        //     ),
+        //   ),
+        //   subtitle: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       Text(
+        //         "Détails : " "Place ${reservation.detailPlace ?? "_"}",
+        //         style: const TextStyle(fontSize: 12),
+        //       ),
+        //       Text(
+        //         reservation.status ?? "_",
+        //         style: const TextStyle(fontSize: 12, color: Colors.grey),
+        //       ),
+        //       Divider()
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }

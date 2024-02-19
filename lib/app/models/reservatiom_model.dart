@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:parkmanager/utils/utils_function.dart';
 
 class Reservation {
   String? id;
@@ -24,7 +25,7 @@ class Reservation {
     userId = json['userId'];
     status = json['status'];
     numberOfHours = json['numberOfHours'];
-    timestamp = json['timestamp'].toString();
+    timestamp = UtilFunction.timestampToString(json["timestamp"]);
     detailPlace = json['detailPlace'];
   }
 
@@ -47,7 +48,8 @@ class Reservation {
       userId: (snapshot.data() as dynamic)["userId"],
       status: (snapshot.data() as dynamic)["status"],
       numberOfHours: (snapshot.data() as dynamic)["numberOfHours"],
-      timestamp: (snapshot.data() as dynamic)["timestamp"].toString(),
+      timestamp: UtilFunction.timestampToString(
+          (snapshot.data() as dynamic)["timestamp"]),
       detailPlace: (snapshot.data() as dynamic)["detailPlace"],
     );
   }

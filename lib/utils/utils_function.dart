@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:parkmanager/utils/dialog.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:developer';
@@ -37,5 +39,20 @@ class UtilFunction {
       subject: "Park manager",
     );
     Get.back();
+  }
+
+  static String timestampToString(Timestamp timestamp) {
+    try {
+      DateTime dateTime = timestamp.toDate();
+      return formatDate(dateTime);
+    } catch (e) {
+      print(e);
+      return "_";
+    }
+  }
+
+  static String formatDate(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('dd MMM. yyyy');
+    return formatter.format(dateTime);
   }
 }

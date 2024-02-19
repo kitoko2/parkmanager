@@ -104,4 +104,33 @@ class CustomDialog {
           ],
         ));
   }
+
+  static unassignedDialog(
+      {required VoidCallback onTap, bool? barrierDismissible = true}) {
+    return Get.defaultDialog(
+        title: "",
+        barrierDismissible: barrierDismissible!,
+        titleStyle: TextStyle(
+          fontFamily: ConstantString.secondpoliceApp,
+          fontWeight: FontWeight.bold,
+        ),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Une fois désassigner cette place sera à nouveau libre , et pourra être réservé par d'autre utilisateur",
+              style: TextStyle(
+                fontSize: 13,
+                // color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 10),
+            CustomButton(
+              width: double.infinity,
+              title: "Désassigner",
+              onTap: onTap,
+            )
+          ],
+        ));
+  }
 }

@@ -27,6 +27,7 @@ dependencies:
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
   simple_circular_progress_bar: ^1.0.2
+  intl: ^0.19.0
 
 dev_dependencies: 
   flutter_launcher_icons: "^0.13.1"

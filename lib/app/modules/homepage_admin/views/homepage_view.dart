@@ -11,6 +11,8 @@ import 'package:parkmanager/app/components/empty_place_widget.dart';
 import 'package:parkmanager/app/modules/notification/views/notification_view.dart';
 import 'package:parkmanager/app/services/parking_service.dart/parking_management.dart';
 import 'package:parkmanager/utils/constants/constant_colors.dart';
+import 'package:parkmanager/utils/dialog.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../controllers/homepage_controller.dart';
 
@@ -63,8 +65,17 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
                               itemCount: data.length,
                               itemBuilder: (context, i) {
                                 final place = data[i];
-                                return PlaceWidget(
-                                  parkingPlace: place,
+                                return ZoomTapAnimation(
+                                  end: .99,
+                                  onTap: place.isAvailable == true
+                                      ? null
+                                      : () {
+                                          CustomDialog.unassignedDialog(
+                                              onTap: () {});
+                                        },
+                                  child: PlaceWidget(
+                                    parkingPlace: place,
+                                  ),
                                 );
                               },
                               gridDelegate:
@@ -77,7 +88,7 @@ class HomepageAdminView extends GetView<HomepageAdminController> {
                             ),
                     );
                   }
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 })
