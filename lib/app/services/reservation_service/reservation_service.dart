@@ -131,6 +131,7 @@ class ReservationService {
           .update({
         'isAvailable': false, // Marquer la place de parking comme occupée
         "busyDuring": busyDuring, // Modifier le temps d'occupation
+        "reservationId": reservationId,
         'occupantId':
             occupantId, // Ajouter l'ID de l'utilisateur qui occupe la place
       });
@@ -166,7 +167,7 @@ class ReservationService {
 
 // Fonction pour désassigner une place occupée par un utilisateur
   static Future<ReservationResponse> unassignParkingPlace(
-      String placeId) async {
+      String placeId, String reservationId) async {
     try {
       await FirebaseFirestore.instance
           .collection(ConstantString.parkingPlaceCollectionName)
@@ -175,12 +176,7 @@ class ReservationService {
         'isAvailable': true, // Marquer la place de parking comme disponible
         'occupantId': null, // Supprimer l'ID de l'occupant de la place
       });
-      final reservationId = await getReservationIdByPlaceID(placeId);
-      if (reservationId == null) {
-        return const ReservationResponse(
-            message: "Aucune réservation trouvée pour cette place de parking.",
-            status: false);
-      }
+
       await FirebaseFirestore.instance
           .collection('reservations')
           .doc(reservationId)
@@ -196,26 +192,6 @@ class ReservationService {
     } catch (e) {
       print('Erreur lors de la désassignation de la place de parking : $e');
       return ReservationResponse(message: e.toString(), status: false);
-    }
-  }
-
-  static Future<String?> getReservationIdByPlaceID(String placeId) async {
-    try {
-      QuerySnapshot<Map<String, dynamic>> reservationSnapshot =
-          await FirebaseFirestore.instance
-              .collection('reservations')
-              .where('placeId', isEqualTo: placeId)
-              .get();
-      if (reservationSnapshot.docs.isNotEmpty) {
-        String reservationId = reservationSnapshot.docs.first.id;
-        return reservationId;
-      } else {
-        print('Aucune réservation trouvée pour cette place de parking.');
-        return null;
-      }
-    } catch (e) {
-      print(e);
-      return null;
     }
   }
 }

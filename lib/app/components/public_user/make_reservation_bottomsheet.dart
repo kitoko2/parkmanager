@@ -86,7 +86,7 @@ class MakeReservationBottomSheetController extends GetxController {
         userId,
         place.adminId!,
         int.parse(numberOfHours),
-        "N ${place.placeNumber} , Etage ${place.etage}");
+        "N°${place.placeNumber} , Etage ${place.etage}");
     Get.back();
     if (res.status == true) {
       CustomDialog.alertDialog(

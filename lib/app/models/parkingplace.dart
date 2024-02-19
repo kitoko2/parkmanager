@@ -8,6 +8,7 @@ class ParkingPlace {
   bool? isAvailable;
   int? busyDuring;
   String? occupantId;
+  String? reservationId;
 
   ParkingPlace(
       {this.id,
@@ -16,7 +17,8 @@ class ParkingPlace {
       this.adminId,
       this.isAvailable,
       this.busyDuring,
-      this.occupantId});
+      this.occupantId,
+      this.reservationId});
 
   ParkingPlace.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -26,6 +28,7 @@ class ParkingPlace {
     isAvailable = json['isAvailable'];
     busyDuring = json['busyDuring'];
     occupantId = json['occupantId'];
+    reservationId = json["reservationId"];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,6 +40,7 @@ class ParkingPlace {
     data['isAvailable'] = isAvailable;
     data['busyDuring'] = busyDuring;
     data['occupantId'] = occupantId;
+    data["reservationId"] = reservationId;
     return data;
   }
 
@@ -49,6 +53,7 @@ class ParkingPlace {
       isAvailable: (snapshot.data() as dynamic)["isAvailable"],
       busyDuring: (snapshot.data() as dynamic)["busyDuring"],
       occupantId: (snapshot.data() as dynamic)["occupantId"],
+      reservationId: (snapshot.data() as dynamic)["reservationId"],
     );
   }
 }

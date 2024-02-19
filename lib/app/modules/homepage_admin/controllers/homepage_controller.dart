@@ -14,8 +14,15 @@ class HomepageAdminController extends GetxController {
 
   unassignParkingPlace(ParkingPlace place) async {
     Get.back();
+
+    if (place.reservationId == null) {
+      CustomDialog.alertDialog(description: "Aucune reservation trouvée");
+      return;
+    }
+
     CustomDialog.customLoad();
-    final res = await ReservationService.unassignParkingPlace(place.id!);
+    final res = await ReservationService.unassignParkingPlace(
+        place.id!, place.reservationId!);
     Get.back();
     if (res.status == true) {
       CustomDialog.alertDialog(
