@@ -14,6 +14,8 @@ ParkManager est une application de gestion des parkings conçue pour les clients
 Admin -> jean@gmail.com  pwd: 111111
 Public user -> dogbo804@gmail.com pwd: 111111
 
+- **Pour installer le .apk** :build/app/outputs/flutter-apk/parkmanager.apk
+
 ## Capture d'écran
 
 ![Capture d'écran](screenshots/1.png)
