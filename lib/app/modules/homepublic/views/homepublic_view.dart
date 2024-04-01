@@ -24,7 +24,7 @@ class HomepublicView extends GetView<HomepublicController> {
             elevation: 0,
             notchMargin: 10,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

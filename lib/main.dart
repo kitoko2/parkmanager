@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parkmanager/app/services/storage.dart';
 import 'package:parkmanager/firebase_options.dart';
+import 'package:parkmanager/utils/firebase_config_functions.dart';
 import 'package:parkmanager/utils/theme.dart';
 
 import 'app/routes/app_pages.dart';
@@ -14,6 +15,8 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SharedPreferencesService.init();
+  await requestFCMPermissions();
+  listenFCMForegroundMessages();
   runApp(const MyApp());
 }
 

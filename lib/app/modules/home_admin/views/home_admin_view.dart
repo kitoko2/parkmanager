@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +28,7 @@ class HomeAdminView extends GetView<HomeController> {
             elevation: 0,
             notchMargin: 10,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -43,8 +44,9 @@ class HomeAdminView extends GetView<HomeController> {
                     },
                   ),
                   FloatingActionButton(
-                    onPressed: () {
+                    onPressed: () async {
                       HapticFeedback.selectionClick();
+                      print(await FirebaseMessaging.instance.getToken());
                       Get.to(
                         const AddparkingplaceView(),
                       );
